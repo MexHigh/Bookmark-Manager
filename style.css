@@ -1,0 +1,57 @@
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 50px;
+}
+
+h2 {
+    text-align: center;
+    margin-block-start: 10px;
+}
+
+.box {
+    border: 2px solid black;
+    width: 80%;
+    margin: 0 auto;         /* center the whole box */
+    margin-bottom: 30px;
+    padding-bottom: 20px;   /* inner distance to lower box border */
+}
+
+#categoryLinkContainer {
+    text-align: center;
+}
+
+.categoryLink {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#adderFormContainer {
+    text-align: center;
+}
+
+input[type="checkbox"] {    /* hight correction */
+    position: relative;
+    top: 2px;
+}
+
+#listContainer {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.delButton {
+    margin: 1px;
+}
+
+.delButton:hover {
+    color: red;
+}
+
+.link {
+    margin-left: 5px;
+}
+
+.yellow {
+    color: darkorange;
+}
