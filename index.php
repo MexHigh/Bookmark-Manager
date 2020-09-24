@@ -21,30 +21,11 @@
 
     <body>
 
-        <!-- Initialisation and POST handling -->
+        <!-- Initialisation -->
         <?php 
             include "connection.php";
             $conn = openConnection();
             $categories = $conn->query("SELECT * FROM Category");
-
-            // add things from form to database
-            if(isset($_POST['url']) && !empty($_POST['url']) && isset($_POST['category']) && !isset($_POST['deleteID'])) {
-
-                if(isset($_POST['fav'])) {
-                    $conn->query("INSERT INTO Link (url, category, fav) VALUES (\"".$_POST['url']."\",".$_POST['category'].",1)");
-                } else {
-                    $conn->query("INSERT INTO Link (url, category) VALUES (\"".$_POST['url']."\",".$_POST['category'].")");
-                }
-                unset($_POST);
-                header("Location: index.php");
-
-            } elseif(isset($_POST['deleteID'])) {
-
-                $conn->query("DELETE FROM Link WHERE id=".$_POST['deleteID']);
-                unset($_POST);
-                header("Location: index.php");
-
-            }
         ?>
 
         <h1>Leons Bookmarks</h1>
@@ -67,7 +48,7 @@
         <div class="box" id="adder">
             <h2>Add Bookmark</h2>
             <div id="adderFormContainer">
-                <form method="post" action="index.php">
+                <form method="post" action="action.php">
 
                     <input type="text" name="url" placeholder="URL">
 
@@ -84,7 +65,8 @@
                     <label>Fav:</label>
                     <input type="checkbox" name="fav" value="yes">
 
-                    <br><br>
+                    <br>
+                    <br>
 
                     <input type="submit" value="Save Bookmark">
 
@@ -106,7 +88,7 @@
                         for($j = 0; $j < $links->num_rows; $j++) {
                             $links->data_seek($j);
                             $row2 = $links->fetch_assoc();
-                            echo "<li><form method='post' action='index.php' onsubmit=\"return confirmDelete(".$row2['id'].",'".$row2['url']."');\">";
+                            echo "<li><form method='post' action='action.php' onsubmit=\"return confirmDelete(".$row2['id'].",'".$row2['url']."');\">";
                             echo "<button class='delButton' type='submit' name='deleteID' value=\"".$row2['id']."\">DEL</button>";
                             if($row2['fav'] == 1) {
                                 echo "<span class='yellow'>[NICE]</span>"; // TODO BUTTON TO UNSTAR AND STAR
