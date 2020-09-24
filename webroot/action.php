@@ -5,6 +5,8 @@
     $conn = openConnection();
     $categories = $conn->query("SELECT * FROM Category");
 
+    // TODO add url parameter (like action.php?action=addURL) to differentiate instead of (or additional to) checking, which headers are set
+
     // if something should be added
     if(isset($_POST['url']) && !empty($_POST['url']) && isset($_POST['category']) && !isset($_POST['deleteID'])) {
 
