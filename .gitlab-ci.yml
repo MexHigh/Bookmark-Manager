@@ -11,7 +11,7 @@ before_script:
   - chmod +x /usr/local/bin/phpunit
   - docker-php-ext-install pdo_mysql
 
-phpunit:
+test:no_errors:
   stage: test
   script:
-    - phpunit webroot
+    - php webroot/*.php
