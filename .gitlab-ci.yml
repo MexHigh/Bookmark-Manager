@@ -9,9 +9,9 @@ before_script:
   - apt-get install git -yqq
   - curl --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit.phar
   - chmod +x /usr/local/bin/phpunit
-  - docker-php-ext-install pdo_mysql
+  - docker-php-ext-install pdo_mysql mysqli
 
-test:no_errors:
+no_php_errors:
   stage: test
   script:
     - php webroot/*.php
