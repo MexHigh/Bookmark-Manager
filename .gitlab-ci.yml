@@ -1,0 +1,17 @@
+image: php:latest
+
+stages:
+  - test
+
+before_script:
+  - set -xe
+  - apt-get update -yqq
+  - apt-get install git -yqq
+  - curl --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit.phar
+  - chmod +x /usr/local/bin/phpunit
+  - docker-php-ext-install pdo_mysql
+
+phpunit:
+  stage: test
+  script:
+    - phpunit
